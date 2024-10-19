@@ -12,6 +12,7 @@ const geistSans = localFont({
   variable: '--font-geist-sans',
   weight: '100 900',
 })
+
 const geistMono = localFont({
   src: './fonts/GeistMonoVF.woff',
   variable: '--font-geist-mono',
@@ -30,8 +31,11 @@ export default function RootLayout({
 }>) {
   return (
     <ClerkProvider>
-      <html lang="en">
-        <body className={inter.className}>
+      <html
+        lang="en"
+        className={`${inter.className} ${geistSans.variable} ${geistMono.variable}`}
+      >
+        <body>
           <Header />
           <main className="container">
             <div className="flex items-start justify-center min-h-screen">
