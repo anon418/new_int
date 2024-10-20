@@ -9,7 +9,6 @@ interface GitHubContent {
   type: string
   path: string
 }
-
 const RepoDirs: React.FC<RepoProps> = async ({ name }) => {
   const username = 'anon418'
   await new Promise((resolve) => setTimeout(resolve, 1000))

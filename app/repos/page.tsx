@@ -1,7 +1,6 @@
 import Link from 'next/link'
 import { FaStar, FaCodeBranch, FaEye } from 'react-icons/fa'
 
-//const username = 'bradtraversy'
 const username = 'anon418'
 
 export default async function ReposPage() {
