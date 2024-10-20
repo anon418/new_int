@@ -4,16 +4,6 @@ import { FaStar, FaCodeBranch, FaEye } from 'react-icons/fa'
 const username = 'anon418'
 
 export default async function ReposPage() {
-  // 1. SSG: Static Site Generation
-  // const response = await fetch(`https://api.github.com/users/${username}/repos`)
-
-  // 2. SSR: Server-Side Rendering
-  // const response = await fetch(
-  // `https://api.github.com/users/${username}/repos`,
-  // { cache: 'no-store' }
-  // )
-
-  // 3. ISR: Incremental Static Generaion
   const response = await fetch(
     `https://api.github.com/users/${username}/repos`,
     { next: { revalidate: 60 } }
@@ -21,7 +11,6 @@ export default async function ReposPage() {
 
   await new Promise((resolve) => setTimeout(resolve, 1000))
   const repos = await response.json()
-  console.log(repos)
 
   return (
     <div>
@@ -31,7 +20,11 @@ export default async function ReposPage() {
       <ul>
         {repos.map((repo: any) => (
           <li key={repo.id} className="bg-gray-100 m-4 p-4 rounded-md">
-            <Link href={`/repos/${repo.name}`}>
+            <Link
+              href={`https://github.com/${username}/${repo.name}`}
+              target="_blank"
+              rel="noopener noreferrer"
+            >
               <h3 className="text-xl font-bold">{repo.name}</h3>
               <p>{repo.description}</p>
               <div className="flex justify-between items-center">
@@ -42,7 +35,8 @@ export default async function ReposPage() {
                   <FaCodeBranch /> {repo.forks_count}
                 </span>
                 <span className="flex items-center gap-1">
-                  <FaEye /> {repo.stargazers_count}
+                  <FaEye /> {repo.watchers_count}{' '}
+                  {/* 변경: watchers_count로 수정 */}
                 </span>
               </div>
             </Link>

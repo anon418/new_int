@@ -9,6 +9,7 @@ interface GitHubContent {
   type: string
   path: string
 }
+
 const RepoDirs: React.FC<RepoProps> = async ({ name }) => {
   const username = 'anon418'
   await new Promise((resolve) => setTimeout(resolve, 1000))
@@ -27,6 +28,8 @@ const RepoDirs: React.FC<RepoProps> = async ({ name }) => {
             <Link
               className="underline"
               href={`https://github.com/${username}/${name}/tree/master/${dir.path}`}
+              target="_blank"
+              rel="noopener noreferrer"
             >
               {dir.path}
             </Link>
