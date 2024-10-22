@@ -33,7 +33,7 @@ const Repo: React.FC<RepoProps> = async ({ name }) => {
           <FaCodeBranch /> {repo.forks_count}
         </span>
         <span className="flex items-center gap-1">
-          <FaEye /> {repo.watchers_count} {/* 변경: watchers_count로 수정 */}
+          <FaEye /> {repo.watchers_count}
         </span>
       </div>
     </div>
